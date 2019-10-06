@@ -1,0 +1,11 @@
+<h3>Cart:</h3>
+
+<div *ngIf="cartItems.length>0; else elseBlock">
+  <li *ngFor="let item of cartItems">
+    <div>{{item.name}}</div>
+    <div>{{item.price}}</div>
+    <div (click)="onRemoveClicked(item)">Remove from Cart</div></li>
+</div>
+<ng-template #elseBlock>
+  <div>No items available</div>
+</ng-template>
