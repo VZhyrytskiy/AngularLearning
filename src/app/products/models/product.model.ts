@@ -1,4 +1,4 @@
-import { Category } from '../../common/enums/category';
+import { Category } from '../../shared/enums/category';
 
 export class ProductModel {
   id: number;

@@ -1,10 +1,14 @@
-<h3>Cart:</h3>
+<h3>Cart list:</h3>
 
 <div *ngIf="cartItems.length>0; else elseBlock">
+  <h5>Count of items: {{getCount()}}</h5>
+  <h5>Overall price: {{getSum()}}</h5>
+
   <li *ngFor="let item of cartItems">
     <div>{{item.name}}</div>
     <div>{{item.price}}</div>
-    <div (click)="onRemoveClicked(item)">Remove from Cart</div></li>
+    <button (click)="onRemoveClicked(item)">Remove from Cart</button>
+  </li>
 </div>
 <ng-template #elseBlock>
   <div>No items available</div>

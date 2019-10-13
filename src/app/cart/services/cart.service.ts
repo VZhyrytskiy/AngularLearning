@@ -25,4 +25,14 @@ export class CartService {
     }
   }
 
+  getCount() {
+    return this.cartItems.length;
+  }
+
+  getSum() {
+    let sum = 0;
+    this.cartItems.every(x => sum += x.price);
+    return sum;
+  }
+
 }

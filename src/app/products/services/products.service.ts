@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ProductModel } from '../models/product.model';
-import { Category } from '../../common/enums/category';
+import { Category } from '../../shared/enums/category';
 
 @Injectable({
   providedIn: 'root',
@@ -9,7 +9,7 @@ import { Category } from '../../common/enums/category';
 export class ProductsService {
   constructor() { }
 
-  getCars(): ProductModel[] {
+  getProducts(): ProductModel[] {
 
     const Cars: ProductModel[] = [
       {
@@ -26,7 +26,7 @@ export class ProductsService {
         description: 'Serious car for serious man',
         price: 30,
         category: Category.BMW,
-        isAvailable: true
+        isAvailable: false
       }
     ];
 

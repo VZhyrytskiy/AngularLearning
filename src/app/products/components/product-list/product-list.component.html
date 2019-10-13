@@ -1,9 +1,5 @@
 <h3>Product List:</h3>
 
 <div *ngFor="let car of cars">
-    <div>{{car.name}}</div>
-    <div>{{car.description}}</div>
-    <div>{{car.category}}</div>
-    <div>{{car.price}}</div>
-    <div>{{car.isAvailable}}</div>
+    <app-product [product]=car (addToCart)="onAddedToCart($event)"></app-product>
 </div>

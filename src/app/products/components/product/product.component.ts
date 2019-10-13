@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { Category } from '../../../common/enums/category';
+import { ProductModel } from './../../models/product.model';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Category } from '../../../shared/enums/category';
 
 @Component({
   selector: 'app-product',
@@ -15,18 +16,15 @@ export class ProductComponent implements OnInit {
   category: Category;
   isAvailable: boolean;
 
+  @Input() product: ProductModel;
+  @Output() addToCart: EventEmitter<ProductModel> = new EventEmitter<ProductModel>();
+
   constructor() { }
 
-  ngOnInit() {
-    this.name = 'Name';
-    this.description = 'Description';
-    this.price = 123;
-    this.category = Category.Volkswagen;
-    this.isAvailable = true;
-  }
+  ngOnInit() { }
 
-  onBuy() {
-    console.log('product was ordered.');
+  onAddedToCart(): void {
+    this.addToCart.emit(this.product);
   }
 
 }
