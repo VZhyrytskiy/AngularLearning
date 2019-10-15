@@ -5,11 +5,14 @@
   <h5>Overall price: {{getSum()}}</h5>
 
   <li *ngFor="let item of cartItems">
-    <div>{{item.name}}</div>
-    <div>{{item.price}}</div>
-    <button (click)="onRemoveClicked(item)">Remove from Cart</button>
+    <app-cart-item
+      [item]=item
+      (remove)="onRemoveClicked($event)"
+      (increase)="onIncreaseClicked($event)"
+      (decrease)="onDecreaseClicked($event)">
+    </app-cart-item>
   </li>
 </div>
 <ng-template #elseBlock>
-  <div>No items available</div>
+  <div>No items in cart</div>
 </ng-template>

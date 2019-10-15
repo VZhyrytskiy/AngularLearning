@@ -24,10 +24,18 @@ export class ProductsService {
         id: 2,
         name: 'BMW X5',
         description: 'Serious car for serious man',
-        price: 30,
+        price: 40,
         category: Category.BMW,
         isAvailable: false
-      }
+      },
+      {
+        id: 3,
+        name: 'Volkswagen Passat',
+        description: 'Most useful car ever',
+        price: 25,
+        category: Category.Volkswagen,
+        isAvailable: true
+      },
     ];
 
     return Cars;
