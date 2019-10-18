@@ -5,3 +5,5 @@
   Divided project onto modules.
   Added CartItem and CartList components, modified CartService to add/remove items, calculate amount of items and their price.
   Added hover style for cartItem, dynamic title for main page.
+10-18-19
+  Added LocalStorageService, ConfigOptionsService, ConstantsService, GeneratorService, AboutComponent, FontClickDirective
