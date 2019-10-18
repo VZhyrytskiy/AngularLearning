@@ -42,14 +42,14 @@ export class CartService {
     }
   }
 
-  getCount() {
+  getItemsAmount() {
     let count = 0;
     this.cartItems.every(
       x => count += x.amount);
     return count;
   }
 
-  getSum() {
+  getItemsSum() {
     let sum = 0;
     this.cartItems.every(
       x => sum += (x.amount * x.product.price));
@@ -78,6 +78,10 @@ export class CartService {
       }
     }
     return result;
+  }
+
+  clearCart(): void {
+    this.cartItems = [];
   }
 
 }

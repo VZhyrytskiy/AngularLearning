@@ -17,8 +17,8 @@ export class CartListComponent implements OnInit {
 
   ngOnInit() {
     this.cartItems = this.cartService.cart;
-    this.getSum = this.cartService.getSum;
-    this.getCount = this.cartService.getCount;
+    this.getSum = this.cartService.getItemsSum;
+    this.getCount = this.cartService.getItemsAmount;
   }
 
   onRemoveClicked(item: CartItemModel): void {
