@@ -4,7 +4,12 @@
   <h5>Count of items: {{getCount()}}</h5>
   <h5>Overall price: {{getSum()}}</h5>
 
-  <li *ngFor="let item of cartItems">
+  <h5>Sort by</h5>
+  <select [(ngModel)]="selectedValue">
+    <option *ngFor="let sortOption of sortOptions" [ngValue]="sortOption">{{sortOption}}</option>
+  </select>
+
+  <li *ngFor="let item of cartItems | orderBy: selectedValue">
     <app-cart-item
       [item]=item
       (remove)="onRemoveClicked($event)"

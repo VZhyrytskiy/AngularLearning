@@ -7,3 +7,6 @@
   Added hover style for cartItem, dynamic title for main page.
 10-18-19
   Added LocalStorageService, ConfigOptionsService, ConstantsService, GeneratorService, AboutComponent, FontClickDirective
+10-30-19
+  Added Uppercase pipe to Product component, Async pipe to Product-list. 
+  Implemented OrderBy pipe. Used in Cart-list.

@@ -9,7 +9,7 @@ import { Category } from '../../shared/enums/category';
 export class ProductsService {
   constructor() { }
 
-  getProducts(): ProductModel[] {
+  getProducts(): Promise<ProductModel[]> {
 
     const Cars: ProductModel[] = [
       {
@@ -38,6 +38,6 @@ export class ProductsService {
       },
     ];
 
-    return Cars;
+    return Promise.resolve(Cars);
   }
 }
