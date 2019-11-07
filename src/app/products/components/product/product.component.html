@@ -1,7 +1,15 @@
-<div>Name: {{product.name | uppercase }}</div>
-<div>Description: {{product.description}}</div>
-<div>Category: {{product.category}}</div>
-<div>Price: {{product.price}}</div>
-<div>Is Available: {{product.isAvailable}}</div>
-
-<button [disabled]="!product.isAvailable" (click)="onAddedToCart()">Add to Cart</button>
+<div class="row">
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <div class="caption">
+        <h5>{{product.name | uppercase}}</h5>
+        <p>Price: {{product.price}}</p>
+        <div>
+          <button class="btn btn-primary" [disabled]="!product.isAvailable" (click)="onAddedToCart()">Add to Cart</button>
+          &nbsp;
+          <button class="btn btn-default" (click)="onDetailsClicked()">Details</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

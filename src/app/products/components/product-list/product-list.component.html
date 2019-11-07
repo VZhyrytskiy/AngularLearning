@@ -1,5 +1,9 @@
 <h3>Product List:</h3>
 
 <div *ngFor="let car of cars | async">
-    <app-product [product]=car (addToCart)="onAddedToCart($event)"></app-product>
+    <app-product
+      [product]=car
+      (addToCart)="onAddedToCart($event)"
+      (details)="onDetailsClicked($event)">
+    </app-product>
 </div>
