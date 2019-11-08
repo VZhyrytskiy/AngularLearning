@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CartService } from '../../services/cart.service';
 import { CartItemModel } from '../../models/cartItem.model';
+import { OrdersService } from '../../../orders/services/orders.service';
 
 @Component({
   selector: 'app-cart-list',
@@ -18,7 +19,7 @@ export class CartListComponent implements OnInit {
   ];
   selectedValue = this.sortOptions[0];
 
-  constructor(private cartService: CartService, private router: Router) { }
+  constructor(private cartService: CartService, private router: Router, private ordersService: OrdersService) { }
 
   ngOnInit() {
     this.cartItems = this.cartService.cart;
@@ -36,5 +37,12 @@ export class CartListComponent implements OnInit {
 
   onDecreaseClicked(item: CartItemModel): void {
     this.cartService.decreaseAmount(item);
+  }
+
+  onOrderClicked(): void {
+    this.ordersService.create(this.cartItems);
+    this.cartService.clearCart();
+    const link = ['/orders/new'];
+    this.router.navigate(link);
   }
 }

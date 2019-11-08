@@ -16,11 +16,13 @@ import { ConfigOptionsService } from './core/services/config-options.service';
 import { GeneratorService } from './core/services/generator.service';
 import { PRODUCTMETADATA } from './core/services/constants.service';
 import { RandomCharacters, GeneratorFactory } from './core/services/generator.factory';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AboutComponent
+    AboutComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

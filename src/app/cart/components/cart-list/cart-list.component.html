@@ -17,6 +17,8 @@
       (decrease)="onDecreaseClicked($event)">
     </app-cart-item>
   </li>
+
+  <button type="button" class="btn btn-primary btn-xs pull-right" (click)="onOrderClicked()">Order</button>
 </div>
 <ng-template #elseBlock>
   <div>No items in cart</div>
