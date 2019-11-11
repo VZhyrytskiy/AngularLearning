@@ -1,32 +1,37 @@
 <div>
-  <div>
-    <nav class="navbar navbar-default">
-      <div class="container-fluid">
+    <div>
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
 
-        <div>
-          <ul class="nav navbar-nav">
-            <li routerLinkActive="active">
-              <a routerLink="/products-list">Products</a>
-            </li>
-            <li routerLinkActive="active">
-              <a routerLink="/cart">Cart</a>
-            </li>
-            <li routerLinkActive="active">
-              <a routerLink="/orders">Orders</a>
-            </li>
-            <li routerLinkActive="active">
-              <a routerLink="/login">Login</a>
-            </li>
-          </ul>
+          <div>
+            <ul class="nav navbar-nav">
+                <li routerLinkActive="active">
+                    <a routerLink="/products-list">Products</a>
+                  </li>
+                  <li routerLinkActive="active">
+                    <a routerLink="/cart">Cart</a>
+                  </li>
+              <li routerLinkActive="active">
+                <a routerLink="/orders">Orders</a>
+              </li>
+
+              <li routerLinkActive="active" *ngIf="authService.isLoggedIn() && authService.isAdmin()">
+                <a routerLink="/admin">Admin</a>
+              </li>
+
+              <li routerLinkActive="active">
+                <a routerLink="/login">Login</a>
+              </li>
+            </ul>
+          </div>
         </div>
-      </div>
-    </nav>
+      </nav>
 
-    <div class="container">
-     <div class="col-md-10">
-        <router-outlet #routerOutlet="outlet">
-        </router-outlet>
+      <div class="container">
+       <div class="col-md-10">
+          <router-outlet #routerOutlet="outlet">
+          </router-outlet>
+        </div>
       </div>
     </div>
   </div>
-</div>

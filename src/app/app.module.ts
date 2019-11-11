@@ -10,28 +10,30 @@ import { OrdersModule } from './orders/orders.module';
 import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core/core.module';
 import { AboutComponent } from './layout/components/about.component';
+import { AdminModule } from './admin/admin.module';
+import { LoginModule } from '../app/login/login.module';
 
 import { LocalStorageService } from './core/services/local-storage.service';
 import { ConfigOptionsService } from './core/services/config-options.service';
 import { GeneratorService } from './core/services/generator.service';
 import { PRODUCTMETADATA } from './core/services/constants.service';
 import { RandomCharacters, GeneratorFactory } from './core/services/generator.factory';
-import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AboutComponent,
-    LoginComponent
+    AboutComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    CartModule,
-    ProductsModule,
-    OrdersModule,
+
     SharedModule,
-    CoreModule
+    LoginModule,
+    AdminModule,
+    ProductsModule,
+    CartModule,
+    OrdersModule,
+    AppRoutingModule
   ],
   providers: [
     { provide: LocalStorageService, useClass: LocalStorageService},

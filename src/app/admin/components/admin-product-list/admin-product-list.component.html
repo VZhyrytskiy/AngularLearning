@@ -1,0 +1,8 @@
+<p class="btn btn-primary" (click)="onAddClicked()">Add product</p>
+
+<div class="row" *ngFor="let car of cars | async">
+  <app-admin-product
+    [product]="car"
+    (edit)="onEditClicked($event)">
+  </app-admin-product>
+</div>

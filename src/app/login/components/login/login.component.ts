@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { AuthenticationService } from '../core/services/authentication.service';
+import { AuthenticationService } from '../../../core/services/authentication.service';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { NavigationExtras, Router } from '@angular/router';
@@ -43,8 +43,7 @@ export class LoginComponent implements OnInit, OnDestroy {
             this.router.navigate([redirect], navigationExtras);
           }
         },
-        err => console.log(err),
-        () => console.log('[takeUntil] complete')
+        err => console.log(err)
       );
   }
 
