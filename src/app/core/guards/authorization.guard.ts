@@ -49,3 +49,5 @@ export class AuthorizationGuard implements CanActivate, CanLoad {
     return false;
   }
 }
+
+// от auth.guard не много отличий

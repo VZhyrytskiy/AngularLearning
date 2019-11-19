@@ -7,12 +7,13 @@ const routes: Routes = [
   {
     path: 'cart',
     component: CartListComponent,
-    children: [
-      {
-        path: '',
-        component: CartListComponent
-      }
-    ]
+    // Думаю, в этом нет смысла
+    // children: [
+    //   {
+    //     path: '',
+    //     component: CartListComponent
+    //   }
+    // ]
   }
 ];
 
