@@ -1,8 +1,8 @@
 <h3>Cart list:</h3>
 
 <div *ngIf="cartItems.length>0; else elseBlock">
-  <h5>Count of items: {{getCount()}}</h5>
-  <h5>Overall price: {{getSum()}}</h5>
+  <h5>Count of items: {{count}}</h5>
+  <h5>Overall price: {{sum}}</h5>
 
   <h5>Sort by</h5>
   <select [(ngModel)]="selectedValue">

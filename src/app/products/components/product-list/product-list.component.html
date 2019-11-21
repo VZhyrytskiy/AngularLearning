@@ -1,7 +1,6 @@
 <div *ngFor="let car of cars | async">
-  <!-- car => "car" -->
     <app-product
-      [product]=car
+      [product]="car"
       (addToCart)="onAddedToCart($event)"
       (details)="onDetailsClicked($event)">
     </app-product>

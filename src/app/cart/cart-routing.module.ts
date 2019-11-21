@@ -6,14 +6,7 @@ import { CartItemComponent, CartListComponent } from './components';
 const routes: Routes = [
   {
     path: 'cart',
-    component: CartListComponent,
-    // Думаю, в этом нет смысла
-    // children: [
-    //   {
-    //     path: '',
-    //     component: CartListComponent
-    //   }
-    // ]
+    component: CartListComponent
   }
 ];
 

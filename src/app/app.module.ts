@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,6 +20,8 @@ import { GeneratorService } from './core/services/generator.service';
 import { PRODUCTMETADATA } from './core/services/constants.service';
 import { RandomCharacters, GeneratorFactory } from './core/services/generator.factory';
 
+import { httpInterceptorProviders } from './core/interceptors';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,9 +36,11 @@ import { RandomCharacters, GeneratorFactory } from './core/services/generator.fa
     ProductsModule,
     CartModule,
     OrdersModule,
+    HttpClientModule,
     AppRoutingModule
   ],
   providers: [
+    httpInterceptorProviders,
     { provide: LocalStorageService, useClass: LocalStorageService},
     { provide: ConfigOptionsService},
     { provide: PRODUCTMETADATA, useValue: 'App: "CarShop", Ver: "1.0"'},

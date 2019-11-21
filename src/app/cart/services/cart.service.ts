@@ -1,4 +1,12 @@
 import { Injectable } from '@angular/core';
+import {
+  HttpClient,
+  HttpHeaders,
+} from '@angular/common/http';
+
+import { Observable } from 'rxjs';
+import { map, switchMap } from 'rxjs/operators';
+
 import { ProductModel } from '../../products/models/product.model';
 import { CartItemModel } from '../models/cartItem.model';
 import { CartServicesModule } from '../cart-services.module';
@@ -9,38 +17,48 @@ import { CartServicesModule } from '../cart-services.module';
 export class CartService {
 
   private cartItems: CartItemModel[] = [];
-  private cartItemId = 0;
+  private id = 0;
 
-  constructor() { }
+  private cartUrl = 'http://localhost:3000/cartitems';
 
-  get cart() {
-    return this.cartItems;
+  constructor(private http: HttpClient) {}
+
+  getCart(): Observable<CartItemModel[]> {
+    return this.http.get<CartItemModel[]>(this.cartUrl);
   }
 
   addToCart(item: ProductModel): void {
-    const existingItem = this.getItemByProduct(item);
-    if (existingItem) {
-      existingItem.amount++;
-    } else {
-      this.cartItemId++;
-      this.cartItems.push(
-        {
-          cartItemId: this.cartItemId,
-          product: item,
-          amount: 1
-        });
-    }
+    this.getItemByProduct(item)
+      .subscribe(existingItem => {
+          if (existingItem) {
+            existingItem.amount++;
+            this.updateCartItem(existingItem)
+              .subscribe();
+            } else {
+              this.createCartItem({
+                product: item,
+                amount: 1
+              }).subscribe();
+            }
+        }
+      );
   }
 
-  removeFromCart(item: CartItemModel): void {
-    const ind = this.cartItems.indexOf(item);
-    if (ind > -1) {
-      if (item.amount > 1) {
-        item.amount--;
-      } else {
-        this.cartItems.splice(ind, 1);
-      }
-    }
+  createCartItem(item: CartItemModel): Observable<CartItemModel> {
+    const body = JSON.stringify(item);
+    const options = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    };
+
+    return this.http
+      .post<CartItemModel>(this.cartUrl, body, options);
+  }
+
+  removeFromCart(item: CartItemModel): Observable<CartItemModel[]> {
+    const url = `${this.cartUrl}/${item.id}`;
+    return this.http.delete(url).pipe(
+      switchMap(() => this.getCart())
+    );
   }
 
   getItemsAmount() {
@@ -57,32 +75,44 @@ export class CartService {
     return sum;
   }
 
-  increaseAmount(item: CartItemModel): void {
+  increaseAmount(item: CartItemModel): Observable<CartItemModel[]> {
     item.amount++;
+    return this.updateCartItem(item).pipe(
+      switchMap(() => this.getCart())
+    );
   }
 
-  decreaseAmount(item: CartItemModel): void {
+  decreaseAmount(item: CartItemModel): Observable<CartItemModel[]> {
     if (item.amount === 1) {
-      this.removeFromCart(item);
+      return this.removeFromCart(item);
     } else {
       item.amount--;
+      return this.updateCartItem(item).pipe(
+        switchMap(() => this.getCart())
+      );
     }
   }
 
-  getItemByProduct(item: ProductModel): CartItemModel {
-    let result: CartItemModel = null;
-
-    for (const cartItem of this.cartItems) {
-      if (cartItem.product.id === item.id) {
-        result = cartItem;
-        break;
-      }
-    }
-    return result;
+  getItemByProduct(item: ProductModel): Observable<CartItemModel> {
+    return this.getCart().pipe(
+      map((cartItems: CartItemModel[]) => {
+        return cartItems.find((cartItem: CartItemModel) => cartItem.product.id === item.id);
+      })
+    );
   }
 
   clearCart(): void {
     this.cartItems = [];
+  }
+
+  updateCartItem(item: CartItemModel): Observable<CartItemModel> {
+    const url = `${this.cartUrl}/${item.id}`;
+    const body = JSON.stringify(item);
+    const options = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    };
+    return this.http
+      .put<CartItemModel>(url, body, options);
   }
 
 }
