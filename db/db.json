@@ -25,18 +25,5 @@
       "isAvailable": true
     }
   ],
-  "cartitems": [
-    {
-      "product": {
-        "id": 3,
-        "name": "Volkswagen Passat",
-        "description": "Most useful car ever",
-        "price": 25,
-        "category": "Category.Volkswagen",
-        "isAvailable": true
-      },
-      "amount": 3,
-      "id": 2
-    }
-  ]
+  "cartitems": []
 }

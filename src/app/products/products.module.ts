@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 
 import { ProductComponent } from './components/product/product.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
-import { ExtendedProductComponent } from './components/extended-product/extended-product.component';
+import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { ProductReviewsComponent } from './components/product-reviews/product-reviews.component';
 
 import { ProductsRoutingModule } from './products-routing.module';
@@ -14,7 +14,7 @@ import { ProductsServicesModule } from './products.services.module';
   declarations: [
     ProductComponent,
     ProductListComponent,
-    ExtendedProductComponent,
+    ProductDetailsComponent,
     ProductReviewsComponent,
   ],
   imports: [

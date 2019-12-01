@@ -5,7 +5,7 @@ import { Directive, HostBinding, HostListener, ElementRef } from '@angular/core'
 })
 export class HoverDirective {
 
-  constructor(private el: ElementRef) { }
+  constructor() { }
 
   @HostBinding('class') className = '';
   @HostListener('mouseenter', ['$event']) onMouseEnter() {

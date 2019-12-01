@@ -9,10 +9,10 @@ import { CartModule } from './cart/cart.module';
 import { ProductsModule } from './products/products.module';
 import { OrdersModule } from './orders/orders.module';
 import { SharedModule } from './shared/shared.module';
-import { CoreModule } from './core/core.module';
 import { AboutComponent } from './layout/components/about.component';
 import { AdminModule } from './admin/admin.module';
 import { LoginModule } from '../app/login/login.module';
+import { RootStoreModule } from './core/@ngrx/root-store.module';
 
 import { LocalStorageService } from './core/services/local-storage.service';
 import { ConfigOptionsService } from './core/services/config-options.service';
@@ -37,7 +37,8 @@ import { httpInterceptorProviders } from './core/interceptors';
     CartModule,
     OrdersModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    RootStoreModule
   ],
   providers: [
     httpInterceptorProviders,
