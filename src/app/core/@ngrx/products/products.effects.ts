@@ -29,6 +29,7 @@ export class ProductsEffects {
         this.productsService
           .getProducts()
           .then((products) => ProductsActions.getProductsSuccess({ products }))
+          // в реальной ситуации не забвайте о catch
       )
     )
   );
