@@ -19,7 +19,7 @@ export class ProductListComponent implements OnInit {
 
  constructor(
     private cartService: CartService,
-    private router: Router,
+    private router: Router, // не используется
     private store: Store<AppState>) {}
 
   ngOnInit() {
