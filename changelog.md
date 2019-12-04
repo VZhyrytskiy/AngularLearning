@@ -16,3 +16,5 @@
   Added backend for project using json-server. Added timing interceptor for products requests. Added AppSettingsService.
 01-12-19
   Added @ngrx states for products and @ngrx/router-store.
+04-12-19
+  Added a ProcessOrderComponent as a reactive form with validation.
