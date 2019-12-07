@@ -78,14 +78,14 @@ export class ProcessOrderComponent implements OnInit, CanComponentDeactivate {
   private buildForm() {
     this.orderForm = this.fb.group({
       firstName: this.fb.control('', { validators: [Validators.required, Validators.minLength(3), this.nameValidator], updateOn: 'blur' }),
-      lastName: '', // так короче this.fb.control(''),
+      lastName: '',
       email: [
         '',
         [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+'), Validators.email]
       ],
       phones: this.fb.array([this.buildPhone()]),
       needDelivery: true,
-      address: '' // this.fb.control(''),
+      address: ''
     });
   }
 

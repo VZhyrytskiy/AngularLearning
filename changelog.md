@@ -18,3 +18,6 @@
   Added @ngrx states for products and @ngrx/router-store.
 04-12-19
   Added a ProcessOrderComponent as a reactive form with validation.
+08-12-19
+  Added integration tests for CartItemComponent, isolated tests for AuthenticationService and OrderByPipe, shallow test for AppComponent.
+  Created test coverage report.

@@ -1,12 +1,17 @@
-import { TestBed } from '@angular/core/testing';
-
 import { AuthenticationService } from './authentication.service';
 
-describe('AuthenticationService', () => {
-  beforeEach(() => TestBed.configureTestingModule({}));
+describe('Authentication service', () => {
+  let service: AuthenticationService;
 
-  it('should be created', () => {
-    const service: AuthenticationService = TestBed.get(AuthenticationService);
-    expect(service).toBeTruthy();
+  beforeEach(() => {
+    service = new AuthenticationService();
+  });
+
+  it('login() should set a user', (done: DoneFn) => {
+    const userName = 'User';
+    service.login(userName).subscribe(() => {
+      expect(service.getUserName()).toBe(userName);
+      done();
+    });
   });
 });
