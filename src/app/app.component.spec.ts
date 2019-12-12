@@ -38,3 +38,4 @@ describe('AppComponent (Shallow)', () => {
     expect(spy.calls.count()).toBe(1, 'loadSettings was called once');
   });
 });
+// Тесты не очень сложные
